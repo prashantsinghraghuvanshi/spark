@@ -39,6 +39,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           setToken(storedToken);
         } catch (error) {
           // If token is invalid, clear authentication
+          console.log(error)
           localStorage.removeItem('token');
           setIsAuthenticated(false);
           setUser(null);
@@ -51,7 +52,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
-    try {
+    
       const response = await apiService.login({ email, password });
       
       localStorage.setItem('token', response.token);
@@ -61,9 +62,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       // TODO: Add endpoint to fetch user profile after login
       // const userProfile = await apiService.getUserProfile();
       // setUser(userProfile);
-    } catch (error) {
-      throw error;
-    }
+    
   }, []);
 
   const logout = useCallback(() => {

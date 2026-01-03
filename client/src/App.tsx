@@ -9,7 +9,7 @@ import TagsPage from "./pages/TagsPage";
 import DraftsPage from "./pages/DraftsPage";
 import LoginPage from "./pages/LoginPage";
 import { AuthProvider, useAuth } from "./components/AuthContext";
-import Footer from "./components/Footer";
+import RegisterPage from "./pages/RegisterPage";
 
 // Protected Route component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -43,6 +43,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage/>} />
           <Route 
             path="/posts/new" 
             element={
